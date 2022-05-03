@@ -11,6 +11,8 @@ function eventHandlers() {
 }
 
 
+
+
 /*
   Post our URL to a Lambda function.
   The Lambda function will return a shortcode URL which it will also set
@@ -18,12 +20,19 @@ function eventHandlers() {
 */
 function submitURL() {
   var url = document.querySelector('#destination').value;
-  fetch('/.netlify/functions/generate-route?to=' + url)
+  var regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+  if(!regex .test(url)) {
+    alert("Please enter valid URL.");
+    
+  } else {
+     fetch('/.netlify/functions/generate-route?to=' + url)
     .then(function(response) { return response.json(); })
     .then(function(data) {
       document.querySelector("#message").innerHTML = `<a href="${data.url}">${data.url}</a>`;
       return;
     });
+  }
+ 
 }
 
 
