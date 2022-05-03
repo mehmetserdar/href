@@ -1,4 +1,4 @@
-![Href screengrab](screenshot.jpg)
+![Href screengrab](screenshot.jpeg)
 
 
 # LinkyLinky
