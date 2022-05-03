@@ -23,7 +23,7 @@ function submitURL() {
   var regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
   if(!regex .test(url)) {
     alert("Please enter valid URL.");
-    
+    return false;
   } else {
      fetch('/.netlify/functions/generate-route?to=' + url)
     .then(function(response) { return response.json(); })
